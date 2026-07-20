@@ -1,0 +1,366 @@
+/* ===========================
+   WKOR FM RADIO
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial,Helvetica,sans-serif;
+    color:#fff;
+    background:#071019;
+    overflow-x:hidden;
+
+}
+
+/* Background */
+
+.background{
+
+    position:fixed;
+    inset:0;
+
+    background:url("images/background.jpg")
+    center center/cover no-repeat;
+
+    z-index:-2;
+
+}
+
+.background::after{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:linear-gradient(
+    rgba(0,0,0,.65),
+    rgba(0,10,25,.90));
+
+}
+
+/* Main */
+
+main{
+
+    width:90%;
+    max-width:1400px;
+    margin:auto;
+
+}
+
+/* HERO */
+
+.hero{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    min-height:90vh;
+
+}
+
+.hero-left{
+
+    width:55%;
+
+}
+
+.hero-right{
+
+    width:40%;
+    display:flex;
+    justify-content:center;
+
+}
+
+.hero-right img{
+
+    width:100%;
+    max-width:430px;
+
+    border-radius:20px;
+
+    border:2px solid #00bfff;
+
+    box-shadow:
+    0 0 25px #00bfff,
+    0 0 60px rgba(0,191,255,.35);
+
+}
+
+/* LIVE */
+
+.live{
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:20px;
+
+    color:#00d8ff;
+
+    font-weight:bold;
+
+    letter-spacing:2px;
+
+}
+
+#liveDot{
+
+    width:14px;
+    height:14px;
+
+    background:#ff0000;
+
+    border-radius:50%;
+
+    animation:blink 1s infinite;
+
+}
+
+@keyframes blink{
+
+0%{
+opacity:1;
+box-shadow:0 0 8px red;
+}
+
+50%{
+opacity:.2;
+}
+
+100%{
+opacity:1;
+box-shadow:0 0 20px red;
+}
+
+}
+
+/* TITLES */
+
+.hero h1{
+
+    font-size:90px;
+    color:white;
+
+    letter-spacing:8px;
+
+}
+
+.hero h2{
+
+    font-size:70px;
+
+    color:#00cfff;
+
+}
+
+.hero h2 span{
+
+    color:white;
+
+}
+
+.subtitle{
+
+    font-size:24px;
+
+    letter-spacing:6px;
+
+    margin-top:10px;
+
+}
+
+.tagline{
+
+    margin-top:20px;
+
+    color:#9fd9ff;
+
+    line-height:1.7;
+
+}
+
+/* CARD */
+
+.now-playing,
+.about,
+.playlist{
+
+    background:rgba(8,20,35,.75);
+
+    border:1px solid rgba(0,191,255,.25);
+
+    border-radius:18px;
+
+    padding:30px;
+
+    margin-bottom:30px;
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:
+
+    0 0 20px rgba(0,191,255,.15);
+
+}
+
+.now-playing h2,
+.about h2,
+.playlist h2{
+
+    color:#00d8ff;
+
+    margin-bottom:25px;
+
+}
+
+/* PLAYER */
+
+.player{
+
+    display:flex;
+
+    gap:25px;
+
+    align-items:center;
+
+}
+
+.player img{
+
+    width:130px;
+
+    border-radius:12px;
+
+}
+
+.info h3{
+
+    font-size:26px;
+
+}
+
+.info p{
+
+    margin-top:8px;
+
+    color:#8fd6ff;
+
+}
+
+/* TIMER */
+
+.timer{
+
+    margin-top:25px;
+
+    color:#00d8ff;
+
+    font-size:18px;
+
+}
+
+/* PLAYLIST */
+
+.track{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    transition:.3s;
+
+}
+
+.track:hover{
+
+    background:rgba(0,191,255,.08);
+
+}
+
+.track.active{
+
+    background:rgba(0,191,255,.18);
+
+    border-left:4px solid #00d8ff;
+
+}
+
+.no{
+
+    width:60px;
+
+    color:#00d8ff;
+
+}
+
+.title{
+
+    flex:1;
+
+}
+
+.length{
+
+    color:#86cfff;
+
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+.hero{
+
+flex-direction:column;
+
+padding-top:50px;
+
+}
+
+.hero-left,
+.hero-right{
+
+width:100%;
+
+text-align:center;
+
+}
+
+.hero h1{
+
+font-size:60px;
+
+}
+
+.hero h2{
+
+font-size:48px;
+
+}
+
+.player{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+}
