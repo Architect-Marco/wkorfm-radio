@@ -1,432 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>WKOR 107.9 FM</title>
-
 <link rel="stylesheet" href="style.css">
-
-<link
-href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Roboto+Mono:wght@300;400;500&display=swap"
-rel="stylesheet">
-
 </head>
-
 <body>
-
-<!-- Background -->
-
 <div class="background"></div>
-<div class="overlay"></div>
 
-<!-- MAIN -->
+<header class="hero">
+  <div class="hero-left">
+    <div class="live"><span id="liveDot"></span><span id="liveText">ON AIR NOW</span></div>
+    <h1>WKOR</h1>
+    <h2>107.9 <span>FM</span></h2>
+    <p class="subtitle">THE STATION</p>
+    <p class="tagline">THE PULSE OF THE SOVEREIGN GRID</p>
+  </div>
 
-<div class="container">
+  <aside class="hero-right">
+    <img id="albumArt" src="images/cover1.jpg" alt="Cover">
+  </aside>
+</header>
 
-<!-- ========================= -->
-<!-- HERO -->
-<!-- ========================= -->
-
-<section class="hero">
-
-<div class="hero-left">
-
-<div class="live-indicator">
-
-<div id="liveDot" class="live-dot"></div>
-
-<span id="liveText">
-ON AIR NOW
-</span>
-
-</div>
-
-<h1>
-WKOR
-</h1>
-
-<h2>
-107.9
-<span>FM</span>
-</h2>
-
-<h3>
-THE STATION
-</h3>
-
-<p class="tagline">
-THE PULSE OF THE SOVEREIGN GRID
-</p>
-
-<div class="hero-wave">
-
-<div id="waveHero"></div>
-
-</div>
-
-<div class="stats">
-
-<div class="stat">
-
-<div class="icon">📡</div>
-
-<div>
-
-<label>LIVE BROADCAST</label>
-
-<p>24 / 7</p>
-
-</div>
-
-</div>
-
-<div class="stat">
-
-<div class="icon">👥</div>
-
-<div>
-
-<label>LIVE LISTENERS</label>
-
-<p id="listenerCount">2785</p>
-
-</div>
-
-</div>
-
-<div class="stat">
-
-<div class="icon">🎵</div>
-
-<div>
-
-<label>GENRE</label>
-
-<p>Electronic</p>
-
-</div>
-
-</div>
-
-<div class="stat">
-
-<div class="icon">🌐</div>
-
-<div>
-
-<label>LOCATION</label>
-
-<p>Sovereign Grid</p>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="hero-right">
-
-<div class="album-card">
-
-<img
-id="albumArt"
-src="images/cover1.jpg"
-alt="Album Cover">
-
-<div class="album-overlay">
-
-<h4>
-THE STATION
-</h4>
-
-<h1>
-107.9
-</h1>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ========================= -->
-<!-- NOW PLAYING -->
-<!-- ========================= -->
-
-<div class="content-row">
-
-<section class="player-card">
-
-<h2>
-NOW ON AIR
-</h2>
+<main>
+<section class="now-playing">
+<h2>NOW ON AIR</h2>
 
 <div class="player">
-
-<img
-id="miniCover"
-src="images/cover1.jpg"
-alt="cover">
-
-<div class="player-info">
-
-<div class="live-badge">
-LIVE
+<img id="miniCover" src="images/cover1.jpg" alt="">
+<div class="info">
+<h3 id="songTitle">THE SIGNAL FILTER - TEASER 1</h3>
+<p id="artist">DJPOLO</p>
+<div id="waveform"></div>
+<div class="timer">
+<span id="currentTime">00:00</span> /
+<span id="duration">00:00</span>
+</div>
+</div>
 </div>
 
-<h3 id="songTitle">
-THE SIGNAL FILTER - TEASER 1
-</h3>
-
-<h4 id="artist">
-DJPOLO
-</h4>
-
-<div id="waveform"
-class="waveform">
-</div>
-
-<div class="controls">
-
-<button id="playBtn">
-
-▶
-
-</button>
-
-<input
-id="progress"
-type="range"
-value="0">
-
-<span id="currentTime">
-
-00:00
-
-</span>
-
-<span>
-
-/
-
-</span>
-
-<span id="duration">
-
-00:00
-
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-<audio id="audio">
-
-<source
-src="music/teaser1.mp3"
-type="audio/mpeg">
-
-</audio>
-
+<audio id="radio"></audio>
 </section>
 
-<section class="about-card">
-
-<h2>
-
-ABOUT WKOR 107.9 FM
-
-</h2>
-
-<p>
-
-WKOR 107.9 FM is the pulse of the Sovereign Grid.
-Broadcasting live from the epicenter of the Aetherwave
-Syndicate, we deliver high-velocity electronic music,
-exclusive mixes and real-time transmissions 24 hours a day.
-
-</p>
-
-<p>
-
-This is more than a station.
-This is the frequency of the future.
-
-</p>
-
-<button>
-
-SOVEREIGN GRID BROADCAST NETWORK
-
-</button>
-
+<section class="about">
+<h2>ABOUT WKOR</h2>
+<p>WKOR broadcasts electronic music 24/7 from the Sovereign Grid.</p>
 </section>
 
+<section class="playlist">
+<h2>PLAYLIST</h2>
+
+<div id="playlistContainer">
+
+<div class="track active">
+<span class="no">01</span>
+<span class="title">THE SIGNAL FILTER - TEASER 1</span>
+<span class="length">02:45</span>
 </div>
 
-<!-- ========================= -->
-<!-- PLAYLIST -->
-<!-- ========================= -->
-
-<section class="playlist-card">
-
-<h2>
-
-PLAYLIST
-
-</h2>
-
-<div class="playlist">
-
-<div class="track active"
-
-data-src="music/teaser1.mp3"
-
-data-title="THE SIGNAL FILTER - TEASER 1"
-
-data-artist="DJPOLO"
-
-data-cover="images/cover1.jpg">
-
-<div class="number">
-
-01
-
+<div class="track">
+<span class="no">02</span>
+<span class="title">THE PYTHON STRIKE - TEASER</span>
+<span class="length">03:12</span>
 </div>
 
-<img src="images/cover1.jpg">
-
-<div class="info">
-
-<h3>
-
-THE SIGNAL FILTER - TEASER 1
-
-</h3>
-
-<p>
-
-DJPOLO
-
-</p>
-
-</div>
-
-<div class="track-wave"></div>
-
-<div class="track-duration">
-
-02:45
-
+<div class="track">
+<span class="no">03</span>
+<span class="title">GRIDLOCK PROTOCOL - INTRO</span>
+<span class="length">01:58</span>
 </div>
 
 </div>
-
-<div class="track"
-
-data-src="music/teaser2.mp3"
-
-data-title="THE PYTHON STRIKE - TEASER"
-
-data-artist="DJPOLO"
-
-data-cover="images/cover2.jpg">
-
-<div class="number">
-
-02
-
-</div>
-
-<img src="images/cover2.jpg">
-
-<div class="info">
-
-<h3>
-
-THE PYTHON STRIKE - TEASER
-
-</h3>
-
-<p>
-
-DJPOLO
-
-</p>
-
-</div>
-
-<div class="track-wave"></div>
-
-<div class="track-duration">
-
-03:12
-
-</div>
-
-</div>
-
-<div class="track"
-
-data-src="music/intro.mp3"
-
-data-title="GRIDLOCK PROTOCOL - INTRO"
-
-data-artist="DJPOLO"
-
-data-cover="images/cover3.jpg">
-
-<div class="number">
-
-03
-
-</div>
-
-<img src="images/cover3.jpg">
-
-<div class="info">
-
-<h3>
-
-GRIDLOCK PROTOCOL - INTRO
-
-</h3>
-
-<p>
-
-DJPOLO
-
-</p>
-
-</div>
-
-<div class="track-wave"></div>
-
-<div class="track-duration">
-
-01:58
-
-</div>
-
-</div>
-
-</div>
-
 </section>
-
-</div>
+</main>
 
 <script src="script.js"></script>
-
 </body>
 </html>
