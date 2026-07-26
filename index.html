@@ -426,7 +426,7 @@ const COVER_1  = "1 - THE SICK TEAM MINI ALUM MIX - cover art.png";
 const COVER_2  = "2 - I CANT LET THIS FEELING GO - FEAT LEXI CON (Cover Art).png";
 const COVER_3_12 = "2ND MINI ALBUM MAGAZINE - 3,4,5,6,7,8,9,10,11,12.png";
 
-const tracks = [
+let tracks = [
   { title:"THE SICK TEAM MINI ALBUM — INTRO", artist:"THE SICK TEAM", src:"1 - THE SICK TEAM MINI ALUM MIX - intro - 2.02min.mp3", cover:COVER_1 },
   { title:"I CAN'T LET THIS FEELING GO (Original Mix)", artist:"THE SICK TEAM FEAT. LEXI CON", src:"2 - I CANT LET THIS FEELING GO - FEAT LEXI CON (Original Mix) - 4.54min.mp3", cover:COVER_2 },
   { title:"THIS IS US (Ver. 1)", artist:"THE SICK TEAM FT LEXI CON", src:"3 - THIS IS US - THE SICK TEAM FT LEIX CON 1 - 3.48min.mp3", cover:COVER_3_12 },
@@ -540,7 +540,7 @@ function renderCurrentTrack(){
   const t = tracks[currentIndex];
   document.getElementById('npTitle').textContent = t.title;
   document.getElementById('npArtist').textContent = t.artist;
-  document.getElementById('npCover').src = encodeURI(t.cover);
+  document.getElementById('npCover').src = t.coverPreEncoded ? t.cover : encodeURI(t.cover);
   buildNpWave(currentIndex);
 
   const nextIdx = (currentIndex+1) % tracks.length;
@@ -565,7 +565,7 @@ function renderCurrentTrack(){
 
 function loadTrack(i){
   currentIndex = i;
-  audio.src = encodeURI(tracks[i].src);
+  audio.src = tracks[i].preEncoded ? tracks[i].src : encodeURI(tracks[i].src);
   renderCurrentTrack();
   audio.play().catch(()=>{ /* waiting for user gesture */ });
 }
@@ -696,6 +696,78 @@ setInterval(()=>{
     el.textContent = Math.max(0, cur + delta).toLocaleString();
   }
 }, 3000);
+
+/* ================= DASHBOARD SYNC ================= */
+/* Appends any tracks pushed from the Radio Station dashboard on top of
+   the 12 mini-album tracks above. Runs once on load, then re-checks
+   every 20s so new uploads show up without a page reload. Never
+   touches or reorders the original 12 — only adds after them. */
+const FALLBACK_SYNC_COVER = COVER_3_12;
+let knownSyncedSrcs = new Set();
+
+function appendSyncedTrack(t){
+  const i = tracks.length;
+  const hasRealArt = !!t.art;
+  tracks.push({
+    title: t.title || 'Untitled',
+    artist: t.artist || '',
+    src: t.src,
+    cover: t.art || FALLBACK_SYNC_COVER,
+    preEncoded: true,        // src is always a pre-encoded URL from the Worker
+    coverPreEncoded: hasRealArt, // only true when cover is a data:URL, not the fallback filename
+  });
+
+  const row = document.createElement('div');
+  row.className = 'playlist-row';
+  row.id = 'row-'+i;
+  row.innerHTML = `
+    <div class="idx" id="idx-${i}">${String(i+1).padStart(2,'0')}</div>
+    <div class="thumb"><img src="${tracks[i].coverPreEncoded ? tracks[i].cover : encodeURI(tracks[i].cover)}" alt="cover art"></div>
+    <div class="meta">
+      <div class="title">${tracks[i].title}</div>
+      <div class="artist">${tracks[i].artist}</div>
+    </div>
+    <div class="pwave" id="pwave-${i}"></div>
+    <div class="dur" id="dur-${i}">--:--</div>
+  `;
+  playlistRoot.appendChild(row);
+
+  const wave = document.getElementById('pwave-'+i);
+  const rand = mulberry32(i*97+11);
+  const bars = [];
+  for(let b=0;b<46;b++){
+    const el = document.createElement('div');
+    el.className = 'b';
+    el.style.height = (4 + rand()*20)+'px';
+    wave.appendChild(el);
+    bars.push(el);
+  }
+  playlistBars.push(bars);
+
+  const probe = document.createElement('audio');
+  probe.preload = 'metadata';
+  probe.src = tracks[i].src;
+  probe.addEventListener('loadedmetadata', ()=>{
+    document.getElementById('dur-'+i).textContent = fmtTime(probe.duration);
+  });
+}
+
+function checkPlaylistSync(){
+  fetch('./playlist.json?t=' + Date.now())
+    .then(r => r.ok ? r.json() : null)
+    .then(data => {
+      if (!data || !Array.isArray(data.tracks)) return;
+      data.tracks.forEach(t => {
+        if (t.src && !knownSyncedSrcs.has(t.src)) {
+          knownSyncedSrcs.add(t.src);
+          appendSyncedTrack(t);
+        }
+      });
+    })
+    .catch(err => console.error('Playlist sync check failed:', err));
+}
+checkPlaylistSync();
+setInterval(checkPlaylistSync, 20000);
 </script>
 </body>
 </html>
