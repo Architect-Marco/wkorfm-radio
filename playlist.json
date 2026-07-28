@@ -1,5 +1,20 @@
 {
-  "updatedAt": "2026-07-28T05:03:50.080Z",
+  "updatedAt": "2026-07-28T05:07:11.159Z",
   "isLive": true,
-  "tracks": []
+  "tracks": [
+    {
+      "id": "st1",
+      "title": "The Signal Filter\" - Teaser 1",
+      "artist": "djpolo",
+      "src": null,
+      "art": null
+    },
+    {
+      "id": "st2",
+      "title": "The Python Strike\" Teaser",
+      "artist": "djpolo",
+      "src": null,
+      "art": null
+    }
+  ]
 }
