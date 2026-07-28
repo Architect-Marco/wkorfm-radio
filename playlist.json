@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-07-28T05:07:29.377Z",
+  "updatedAt": "2026-07-28T05:07:34.598Z",
   "isLive": true,
   "tracks": [
     {
       "id": "st-1785215248430-0uk58",
       "title": "WKOR SWEEPER 1",
-      "artist": "Uploading…",
-      "src": null,
+      "artist": "djpolo",
+      "src": "https://architect-marco.github.io/SOVEREIGN-GRID-DASHBOARD/WKOR/WKOR%20SWEEPER%201.mp3",
       "art": null
     }
   ]
