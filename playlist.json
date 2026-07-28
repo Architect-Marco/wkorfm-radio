@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-28T05:03:42.034Z",
+  "updatedAt": "2026-07-28T05:03:46.387Z",
   "isLive": true,
   "tracks": [
     {
@@ -21,13 +21,6 @@
       "title": "WKOR SWEEPER 2",
       "artist": "djpolo",
       "src": "https://architect-marco.github.io/SOVEREIGN-GRID-DASHBOARD/WKOR/WKOR%20SWEEPER%202.mp3",
-      "art": null
-    },
-    {
-      "id": "st-1785202697271-8zivc",
-      "title": "TURN UP THE NOISE - THE SICK TEAM - (Firewall Prime)",
-      "artist": "djpolo",
-      "src": "https://architect-marco.github.io/SOVEREIGN-GRID-DASHBOARD/WKOR/TURN%20UP%20THE%20NOISE%20-%20THE%20SICK%20TEAM%20-%20(Firewall%20Prime).mp3",
       "art": null
     }
   ]
