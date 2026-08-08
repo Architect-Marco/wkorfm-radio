@@ -1,19 +1,12 @@
 {
-  "updatedAt": "2026-08-08T10:46:57.877Z",
+  "updatedAt": "2026-08-08T18:17:03.395Z",
   "isLive": true,
   "tracks": [
     {
-      "id": "st1",
-      "title": "The Signal Filter\" - Teaser 1",
+      "id": "st-1785215248430-0uk58",
+      "title": "WKOR SWEEPER 1",
       "artist": "djpolo",
-      "src": null,
-      "art": null
-    },
-    {
-      "id": "st2",
-      "title": "The Python Strike\" Teaser",
-      "artist": "djpolo",
-      "src": null,
+      "src": "https://architect-marco.github.io/SOVEREIGN-GRID-DASHBOARD/WKOR/WKOR%20SWEEPER%201.mp3",
       "art": null
     }
   ]
